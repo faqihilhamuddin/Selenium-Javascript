@@ -2,7 +2,7 @@
 const { expect } = require('chai');
 const { By, until } = require('selenium-webdriver');
 
-const { createDriver } = require('../utils/driver');
+const { createDriver } = require('../utils/utils');
 const LoginPage = require('../pages/loginpage');
 
 describe('SauceDemo - Login Test', function () {
@@ -41,4 +41,9 @@ describe('SauceDemo - Login Test', function () {
         expect(currentUrl).to.include('inventory.html');
     });
 
+    it('TC002 - Clear Value in Username Field', async function () {
+        await loginPage.open();
+        await loginPage.writeUsername('standard_user');
+        await loginPage.clearUsername();
+    });
 });

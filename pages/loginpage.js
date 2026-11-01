@@ -1,9 +1,11 @@
 
 const { By, until } = require('selenium-webdriver');
+const BasePage = require('./page');
 
-class LoginPage {
+
+class LoginPage extends BasePage {
     constructor(driver) {
-        this.driver = driver;
+        super(driver);
 
         this.usernameField = By.id('user-name');
         this.passwordField = By.id('password');
@@ -12,22 +14,26 @@ class LoginPage {
     }
 
     async open() {
-        await this.driver.get('https://www.saucedemo.com/');
+        await super.open('https://www.saucedemo.com/');
+    }
+
+    async writeUsername(username) {
+        await super.setValue(this.usernameField, username);
     }
 
     async login(username, password) {
-        await this.driver.findElement(this.usernameField).sendKeys(username);
-        await this.driver.findElement(this.passwordField).sendKeys(password);
-        await this.driver.findElement(this.loginButton).click();
+        await super.setValue(this.usernameField, username);
+        await super.setValue(this.passwordField, password);
+        await super.click(this.loginButton);
     }
 
     async getErrorMessage() {
-        const element = await this.driver.wait(
-            until.elementLocated(this.errorMessage),
-            5000
-        );
-
+        const element = await this.waitForElement(this.errorMessage, 5000);
         return await element.getText();
+    }
+
+    async clearUsername() {
+        await super.clearValue(this.usernameField);
     }
 }
 
