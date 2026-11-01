@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/*.test.js"
+    "test": "mocha tests/**/*.test.js",
+    "test-spec": "mocha"
   },
   "overrides": {
-  "glob": "^14.0.2",
-  "minimatch": "^11.0.1"
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "selenium-webdriver": "^4.46.0"
   },
   "devDependencies": {
+    "chai": "^6.3.0",
     "mocha": "^12.0.3"
   }
 }
