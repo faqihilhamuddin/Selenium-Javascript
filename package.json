@@ -1,0 +1,22 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js"
+  },
+  "overrides": {
+  "glob": "^14.0.2",
+  "minimatch": "^11.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "selenium-webdriver": "^4.46.0"
+  },
+  "devDependencies": {
+    "mocha": "^12.0.3"
+  }
+}
