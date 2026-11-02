@@ -82,6 +82,23 @@ class BasePage {
         const element = await this.driver.findElement(locator);
         return await element.isEnabled();
     }
+
+    async scrollIntoElement(locator) {
+    const element = await this.driver.wait(
+        until.elementLocated(locator), 10000
+    );
+
+    await this.driver.wait(
+        until.elementIsVisible(element), 10000
+    );
+
+    await this.driver.executeScript(
+        "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });",
+        element
+    );
+
+    await sleep();
+}
 }
 
 module.exports = BasePage;

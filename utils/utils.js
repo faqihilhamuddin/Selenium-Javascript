@@ -1,4 +1,3 @@
-
 const { Builder } = require('selenium-webdriver');
 
 const sleep = (ms = 5000) => new Promise(resolve => setTimeout(resolve, ms));
