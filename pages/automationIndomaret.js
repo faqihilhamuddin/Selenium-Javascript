@@ -1,22 +1,24 @@
 const { By, until } = require('selenium-webdriver');
 const BasePage = require('./page');
+const sleep = (ms = 5000) => new Promise(resolve => setTimeout(resolve, ms));
 
 
 class indomart extends BasePage {
     constructor(driver) {
         super(driver);
 
-        this.closeModal = By.css("button[aria-label='Close']");
-        this.kategori = By.xpath("//span[text()='Kategori']");
-        this.makanan = By.xpath("//button//span[normalize-space()='Makanan']");
-        this.madu = By.xpath("//div[contains(@class,'menu-list') and normalize-space()='Madu']");
-        this.card = By.css(".card-product:nth-of-type(1)");
-        this.tambahKeranjang = By.css("button.bg-primary");
+        this.closeModal = By.css("[color='#151823']");
+        this.kategori = By.css(".-top-2 > .flex");
+        this.makanan = By.css("button:nth-of-type(3)");
+        this.madu = By.css("[href='/xpress/category/makanan/sarapan-selai/madu'] .menu-list");
+        this.card = By.css(".mb-6 > div:nth-of-type(1) > #default-card");
+        this.tambahKeranjang = By.css(".flex.bg-primary");
 
     }
 
     async open() {
         await super.open('https://www.klikindomaret.com/');
+        await sleep(10000);
     }
 
     async closePopUp(){
@@ -43,7 +45,8 @@ class indomart extends BasePage {
         await super.click(this.card);
     }
 
-    async clickTambahKeranjang() {    
+    async clickTambahKeranjang() {   
+        await sleep(5000);  
         await super.click(this.tambahKeranjang);
     }
 
